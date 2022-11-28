@@ -1,0 +1,27 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9895, localhost:9896, localhost:9897
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: library-events-listener-group
+      ssl:
+        trust-store-location: file:/Users/eopoku/ssh/client.truststore.jks
+        trust-store-password: kafka123
+        key-store-location: file:/Users/eopoku/ssh/client.keystore.jks
+        key-store-password: kafka123
+      properties:
+        security:
+          protocol: SSL
+        ssl.endpoint.identification.algorithm:
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+  jpa:
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
